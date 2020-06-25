@@ -14,7 +14,6 @@ class Review extends Component {
 
   componentWillMount() {
     const { steps } = this.props;
-    console.log(steps, 'what is in steps here at review');
     const { name, socialMedia, company } = steps;
 
     this.setState({ name, socialMedia, company });

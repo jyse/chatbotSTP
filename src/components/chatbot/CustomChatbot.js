@@ -4,14 +4,7 @@ import Review from "../review/Review";
 import ClientList from "../clientlist/ClientList";
 import { ThemeProvider } from "styled-components";
 
-function CustomChatbot(props) {
-  const config = {
-    width: "800px",
-    height: "1000px",
-    floating: true
-  };
-
-  const steps = [
+const steps = [
       {
           id: "Greet",
           message: "Hello Jason, how can I help you today?",
@@ -22,7 +15,7 @@ function CustomChatbot(props) {
           options: [
               {
                 value: "sales",
-                label: "I luhflaiwuheflaiwuhfelaiwuheflawiuefhmade a sale today!",
+                label: "I made a sale today!",
                 trigger: "Congratulations on clients"
               },
               {
@@ -343,6 +336,15 @@ function CustomChatbot(props) {
          userBubbleColor: "#fff",
          userFontColor: "#4c4c4c"
         };
+
+
+
+function CustomChatbot(props) {
+  const config = {
+    width: "500px",
+    height: "600px",
+    floating: true
+  };
 
 
   return (

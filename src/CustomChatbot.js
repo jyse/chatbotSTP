@@ -3,12 +3,6 @@ import ChatBot from "react-simple-chatbot";
 import NewClientForm from "../newclientform/NewClientForm";
 import { ThemeProvider } from "styled-components";
 
-function CustomChatbot(props) {
-  const config = {
-    width: "600px",
-    height: "700px",
-    floating: true
-  };
 
   const steps = [
       {
@@ -105,6 +99,14 @@ function CustomChatbot(props) {
          userBubbleColor: "#fff",
          userFontColor: "#4c4c4c"
         };
+
+
+function CustomChatbot(props) {
+  const config = {
+    width: "600px",
+    height: "700px",
+    floating: true
+  };
 
 
   return (

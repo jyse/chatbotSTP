@@ -22,7 +22,7 @@ function CustomChatbot(props) {
           options: [
               {
                 value: "sales",
-                label: "I made a sale today!",
+                label: "I luhflaiwuheflaiwuhfelaiwuheflawiuefhmade a sale today!",
                 trigger: "Congratulations on clients"
               },
               {

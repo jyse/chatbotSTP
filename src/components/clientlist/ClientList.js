@@ -1,7 +1,5 @@
 import React, {Component } from "react";
-import ChatBot from "react-simple-chatbot";
 import PropTypes from 'prop-types';
-import { ThemeProvider } from "styled-components";
 
 class ClientList extends Component {
   constructor(props) {
@@ -14,7 +12,6 @@ class ClientList extends Component {
 
   componentWillMount() {
     const { steps } = this.props;
-    console.log(steps, 'what is in steps here at review');
     const { fullName } = steps;
 
     this.setState({ fullName });

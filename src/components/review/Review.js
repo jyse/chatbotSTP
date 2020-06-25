@@ -1,7 +1,5 @@
 import React, {Component } from "react";
-import ChatBot from "react-simple-chatbot";
 import PropTypes from 'prop-types';
-import { ThemeProvider } from "styled-components";
 
 class Review extends Component {
   constructor(props) {

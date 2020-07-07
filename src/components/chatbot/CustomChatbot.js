@@ -2,6 +2,8 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import Review from "../review/Review";
 import ClientList from "../clientlist/ClientList";
+import Numbers from "../numbers/Numbers";
+import MainMenu from "../MainMenu";
 import { ThemeProvider } from "styled-components";
 
 const steps = [
@@ -306,7 +308,7 @@ const steps = [
       {
         id: "Referring back to the main menu",
         message: "I'm going to send you back to the main menu",
-        trigger: "Done"
+        trigger: "Keep up the good work"
       },
       {
         id: "Thank you",
@@ -319,9 +321,14 @@ const steps = [
         trigger: "Anything else?"
       },
       {
-        id: "Done",
+        id: "Keep up the good work",
         message: "Keep up the good work! Bye Jason!",
-        end: true
+        trigger: "Main Menu"
+      },
+      {
+        id: "Main Menu",
+        component: <MainMenu />,
+        asMessage: true,
       }
   ];
 

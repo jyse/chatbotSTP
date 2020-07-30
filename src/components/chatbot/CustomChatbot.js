@@ -9,327 +9,138 @@ import { ThemeProvider } from "styled-components";
 const steps = [
       {
           id: "Greet",
-          message: "Hello Jason, how can I help you today?",
-          trigger: "Displaying options of user scenarios"
+          message: "Hi Jason! How are you today? Did you take action on sales today?",
+          trigger: "Displaying yes or no"
       },
       {
-          id: "Displaying options of user scenarios",
+          id: "Displaying yes or no",
           options: [
               {
-                value: "sales",
-                label: "I made a sale today!",
-                trigger: "Congratulations on clients"
+                value: "yesActions",
+                label: "Yes, I took action(s)",
+                trigger: "Ask about clients"
               },
               {
-                value: "connections",
-                label: "I made calls today",
-                trigger: "Congratulations on clients"
-              },
-              {
-                value: "newclient",
-                label: "I'd like to add a new client",
-                trigger: "Asking details of client"
-              },
-              {
-                value: "reference",
-                label: "please send me to the main menu",
-                trigger: "Referring back to the main menu"
+                value: "noActions",
+                label: "No, I didn't have time today",
+                trigger: "Goodbye"
               },
           ]
       },
       {
-          id: "Congratulations on clients",
-          message: "Congratulations! Does your client exist in your contact list? ",
-          trigger: "Question about the existence of clients"
+          id: "Ask about clients",
+          message: "Good job! How many potential new clients did you add to your list today? Use numbers ",
+          trigger: "Awaiting number clients Part 1",
       },
       {
-          id: "Question about the existence of clients",
-          options: [
-            {
-              value: "client does not exist",
-              label: "client is new",
-              trigger: "Ask to add client"
-            },
-            {
-              value: "client exists",
-              label: "client exists",
-              trigger: "Ask about existing client"
-            }
-          ]
-      },
-      {
-        id: "Ask to add client",
-        message: "Would you like to add this client?",
-        trigger: "Options of adding client now or later"
-      },
-      {
-        id: "Options of adding client now or later",
-        options: [
-            {
-              value: "addingclientnow",
-              label: "Yes, I'd like to add the client now",
-              trigger: "Asking details of client"
-            },
-            {
-              value: "addclientlater",
-              label: "No, I'd like to add this client later",
-              trigger: "Ofcourse"
-            }
-        ]
-      },
-      {
-        id: "Asking details of client",
-        message: "What is the name of the client?",
-        trigger: "name",
-      },
-      {
-        id: "name",
-        user: true,
-        trigger: "Ways of Connecting",
-      },
-      {
-        id: "Ways of Connecting",
-        message: "Through which social media platform did you connect with this client? Select one.",
-        trigger: "socialMedia",
-      },
-      {
-        id: "socialMedia",
-        options: [
-          {
-            value: "LinkedIn",
-            label: "LinkedIn",
-            user: true,
-            trigger: "Company question"
-          },
-          {
-            value: "Facebook",
-            label: "Facebook",
-            user: true,
-            trigger: "Company question"
-          },
-          {
-            value: "Instagram",
-            label: "Instagram",
-            user: true,
-            trigger: "Company question"
-          }
-        ]
-      },
-      {
-        id: "Company question",
-        message: "Which company does this client own or works at?",
-        trigger: "company",
-      },
-      {
-        id: "company",
-        user: true,
-        trigger: "review",
-      },
-      {
-        id: "review",
-        component: <Review />,
-        asMessage: true,
-        trigger: "Add another new client"
-      },
-      {
-        id: "Add another new client",
-        message: "Would you like to add another client?",
-        trigger: "Yes or No to adding another client",
-      },
-      {
-        id: "Yes or No to adding another client",
-        options: [
-          {
-              value: "dontaddanotherclient",
-              label: "No, I'm good",
-              trigger: "Thank you"
-          },
-          {
-              value: "addanotherclient",
-              label: "Yes, I'd like to add another client",
-              trigger: "Asking details of client"
-          }
-        ]
-      },
-      { id: "Money",
-        message: "So the big question is...how much money did you earn today? State amount + currency. ",
-        trigger: "Show Amount",
-      },
-      {
-        id: "Show Amount",
-        user: true,
-        trigger: "Sales Number of the day"
-      },
-      {
-        id: "Sales Number of the day",
-        message: " You have earned {previousValue} euro today. Awesome!",
-        trigger: "Which campaigne?",
-      },
-      {
-        id:"Which campaigne?",
-        message: "To which campaign can I add this sale?",
-        trigger: "Check Campaign list"
-      },
-      {
-        id: "Check Campaign list",
-        user: true,
-        trigger: "Added info"
-      },
-      {
-        id: "Added info",
-        message: "Thank you, I added all this info to the database",
-        trigger: "Anything else?"
-      },
-      {
-        id: "Anything else?",
-        message: "Is there anything else I can help you with?",
-        trigger: "Displaying options of user scenarios",
-      },
-      {
-        id: "Ask about existing client",
-        message: "Could you please give me the first name and last name of this client?",
-        trigger: "fullName"
-      },
-      {
-        id: "fullName",
-        user: true,
-        trigger: "ClientList Search"
-      },
-      {
-        id: "ClientList Search",
-        component: <ClientList />,
-        asMessage: true,
-        trigger: "Result finding client"
-      },
-      {
-        id: "Result finding client",
-        message: "Is {previousValue} your client?",
-        trigger: "Yes Or No to finding client",
-      },
-      {
-        id: "Yes Or No to finding client",
-        options: [
-            {
-              value: "clientFound",
-              label: "Yes, this is him or her",
-              trigger: "Ask about topic of connection",
-            },
-            {
-              value: "clientnotfound",
-              label: "No, this isn't him or her",
-              trigger: "Ask to add client"
-            }
-        ]
-      },
-      {
-        id: "Yes Or No to finding client to who you sold",
-        options: [
-            {
-              value: "clientFound",
-              label: "Yes, this is him or her",
-              trigger: "Money",
-            },
-            {
-              value: "clientnotfound",
-              label: "No, this isn't him or her",
-              trigger: "Ask to add client"
-            }
-        ]
-      },
-      {
-          id: "Ask about topic of connection",
-          message: "Did you take one of the following steps with this client? Please select your choice",
-          trigger: "Choices of topic"
-      },
-      {
-          id: "Choices of topic",
-          options: [
-            {
-              value: "madesales",
-              label: "I sold my client something!",
-              trigger: "Money"
-            },
-            {
-              value: "appointment",
-              label: "I made an appointment",
-              trigger: "What day is the appointment?"
-            },
-            {
-              value: "salespitch",
-              label: "I made an offer",
-              trigger: "How much was the offer?"
-            }
-          ]
-      },
-      {
-        id: "What day is the appointment?",
-        message: "At what day did you plan the appointment? Write it like: \"DD-MM-YY\" ",
-        trigger: "Make appointment"
-      },
-      {
-          id: "Make appointment",
+          id: "Awaiting number clients Part 1",
           user: true,
-          trigger: "Appointment made"
+          trigger: "Awaiting number clients Part 2",
       },
       {
-        id: "Appointment made",
-        message: " I have put the appointment at {previousValue} with your client in the calendar!",
-        trigger: "Anything else?",
+          id: "Awaiting number clients Part 2",
+          message: "Awesome number!",
+          trigger: "Ask about calls"
       },
       {
-        id: "Show selected clients with sales cycle",
-        message: "Jessy - Connection"
+        id: "Ask about calls",
+        message: "How many calls did you make today or reach outs through social media did you make today?",
+        trigger: "Awaiting number of calls or reach outs Part 1"
       },
       {
-        id: "How much was the offer?",
-        message: "How much was the offer? State amount + currency",
-        trigger: "Amount offer"
-      },
-      {
-        id: "Amount offer",
+        id: "Awaiting number of calls or reach outs Part 1",
         user: true,
-        trigger: "When hear from client about offer?",
+        trigger: "Awaiting number of calls or reach outs Part 2",
       },
       {
-        id: "When hear from client about offer?",
-        message: "When will you hear from this client about the offer? Write it like: \"DD-MM-YY\"",
-        trigger: "Calender reminder"
+        id: "Awaiting number of calls or reach outs Part 2",
+        message: "Good work!",
+        trigger: "How many responses"
       },
       {
-        id: "Calender reminder",
+        id: "How many responses",
+        message: "And out of those {previousValue} people, how many answered the call, responded back or called you back from previous day efforts?",
+        trigger: "Awaiting number responses Part 1",
+      },
+      {
+        id: "Awaiting number responses Part 1",
         user: true,
-        trigger: "Calender reminder setting",
+        trigger: "Awaiting number responses Part 2"
       },
       {
-        id: "Calender reminder setting",
-        message: " I have put a reminder for you at {previousValue} to contact your client about the offer",
-        trigger: "Anything else?"
+        id: "Awaiting number responses Part 2",
+        message: "Excellent!",
+        trigger: "Ask about appointments or conversations",
       },
       {
-        id: "Referring back to the main menu",
-        message: "I'm going to send you back to the main menu",
-        trigger: "Keep up the good work"
+        id: "Ask about appointments or conversations",
+        message: "How many appointments or conversations did you have where you discovered someone's wants and needs?",
+        trigger: "Awaiting appointments number Part 1",
       },
       {
-        id: "Thank you",
-        message: "Thank you",
-        trigger: "Anything else?"
+        id: "Awaiting appointments number Part 1",
+        user: true,
+        trigger:  "Awaiting appointments number Part 2",
       },
       {
-        id: "Ofcourse",
-        message: "Ofcourse, that is no problem",
-        trigger: "Anything else?"
+        id: "Awaiting appointments number Part 2",
+        message: "That's 4 more than yesterday, good job! (bonus)",
+        trigger: "Ask about pitches and offers",
       },
       {
-        id: "Keep up the good work",
-        message: "Keep up the good work! Bye Jason!",
-        trigger: "Main Menu"
+        id: "Ask about pitches and offers",
+        message: "How many pitches or offers did you present today?",
+        trigger: "Awaiting pitches number Part 1",
       },
       {
-        id: "Main Menu",
-        component: <MainMenu />,
-        asMessage: true,
-      }
+        id: "Awaiting pitches number Part 1",
+        user: true,
+        trigger: "Awaiting pitches number part 2",
+      },
+      {
+        id: "Awaiting pitches number part 2",
+        message: "Amazing!",
+        trigger: 'Ask about sales'
+      },
+      {
+        id: "Ask about sales",
+        message: "How many sales did you make today?!",
+        trigger: "Ask about quantity of sales",
+      },
+      {
+        id: "Ask about quantity of sales",
+        user: true,
+        trigger: "Awaiting quantity of sales Part 1",
+      },
+      {
+        id: "Awaiting quantity of sales Part 1",
+        message: "{previousValue} is an amazing number!",
+        trigger: "Ask about value of sales",
+      },
+      {
+        id: "Ask about value of sales",
+        message: "How much did you make in sales? (e.g. 500 EU)",
+        trigger: "Awaiting value of sales Part 1",
+      },
+      {
+        id: "Awaiting value of sales Part 1",
+        user: true,
+        trigger: "Awaiting value of sales Part 2"
+      },
+      {
+        id: "Awaiting value of sales Part 2",
+        message: "Wow! Good work!",
+        trigger: "Show report"
+
+      },
+      { id: "Show report",
+        message: "Here's your report of the week! Keep on going! ",
+        trigger: "Goodbye",
+      },
+      {
+        id: "Goodbye",
+        message: "See you again tomorrow!",
+      },
   ];
 
   const theme = {
